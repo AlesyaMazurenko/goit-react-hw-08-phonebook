@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import * as api from "../../shared/api/contacts";
 
-axios.defaults.baseURL = 'https://6391517b65ff4183112ad2e0.mockapi.io/api';
+// axios.defaults.baseURL = 'https://6391517b65ff4183112ad2e0.mockapi.io/api';
 
 // const isDublicate = ({ name, phone }, contacts) => {
 //     const normalizedName = name.toLowerCase();
