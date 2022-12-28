@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instanceContacts = axios.create({
-    baseURL: "https://6391517b65ff4183112ad2e0.mockapi.io/api/",
+    baseURL: "https://connections-api.herokuapp.com",
     // params: {
     //     _limit: 25,
     // }
