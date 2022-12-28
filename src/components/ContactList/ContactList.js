@@ -14,10 +14,10 @@ export const ContactList = () => {
         dispatch(action);
     }
     
-    const elements = filteredContacts.map(({ name, phone, id }) => {
+    const elements = filteredContacts.map(({ name, number, id }) => {
         return <li className="contacts_item" key={id}>
             
-            {name}: {phone}
+            {name}: {number}
             <button type="button" className='btn_remove' onClick={() => onRemoveContact(id)}>X</button>
         </li>
     })
