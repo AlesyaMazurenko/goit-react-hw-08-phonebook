@@ -10,7 +10,7 @@ const Form = () => {
 
   // const [state, setState] = useState(initialState);
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
@@ -24,33 +24,33 @@ const Form = () => {
       case 'name':
         return setName(value);
       case 'number':
-        return setPhone(value);
+        return setNumber(value);
       default:
         return;
     }
   };
   
-  const isDuplicate = ({ name, phone }) => {
-    const resullt = contacts.find(item => item.name === name || item.phone  === phone);
+  const isDuplicate = ({ name, number }) => {
+    const resullt = contacts.find(item => item.name === name || item.number  === number);
     return resullt;
   } 
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    if (isDuplicate({ name, phone })) {
-      return alert(`Contact with name ${name} or number ${phone} is already in list`);
+    if (isDuplicate({ name, number })) {
+      return alert(`Contact with name ${name} or number ${number} is already in list`);
     }
 
     // const action = contactsReducer({ name, phone });
-    const action = addContact({ name, phone });
+    const action = addContact({ name, number });
     dispatch(action);
     reset();
   };
     
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -75,7 +75,7 @@ const Form = () => {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           className="input_field"
-          value={phone}
+          value={number}
           onChange={handleInputChange}
           id={numberId} />
       </label> 
