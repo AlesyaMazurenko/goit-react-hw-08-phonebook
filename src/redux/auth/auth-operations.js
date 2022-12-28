@@ -66,10 +66,23 @@ export const logOut = createAsyncThunk(
 
 
 //  ***
-//  GET @ /users/me
+//  GET @ /users/current
 //  headers: Autorization: Bearer token
 //
 export const refreshUser = createAsyncThunk(
     'auth/refresh',
-    async (_, thunkAPI) => { }
+    async (_, thunkAPI) => { 
+        const { token } = thunkAPI.getState().auth;
+        if (!token) {
+            return thunkAPI.rejectWithValue('No valid token');
+        }
+
+        setAuthHeader(token);
+        try {
+            const res = await axios.get('/users/current');
+            return res.data;
+        } catch (error) {
+               return thunkAPI.rejectWithValue(error.message); 
+        }
+    }
 );
