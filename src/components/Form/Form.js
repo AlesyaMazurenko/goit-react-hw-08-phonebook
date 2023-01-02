@@ -4,15 +4,14 @@ import './form.css';
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "redux/contacts/contacts-operations";
 import { getContacts } from "redux/contacts/contacts-selector";
-// import { contactsReducer } from "redux/contacts/contacts-slice";
+import { Input, Button, FormLabel, useToast, VStack } from '@chakra-ui/react';
 
 const Form = () => {
-
-  // const [state, setState] = useState(initialState);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+  const toast = useToast();
 
   const nameId = nanoid();
   const numberId = nanoid();
@@ -39,10 +38,17 @@ const Form = () => {
     evt.preventDefault();
 
     if (isDuplicate({ name, number })) {
-      return alert(`Contact with name ${name} or number ${number} is already in list`);
+    
+      toast({
+        title: `Contact with name ${name} or number ${number} is already in list`,
+        status: 'error',
+        duration: 5000,
+        position: 'top',
+        isClosable: true
+      })
+      return;
     }
 
-    // const action = contactsReducer({ name, phone });
     const action = addContact({ name, number });
     dispatch(action);
     reset();
@@ -54,9 +60,16 @@ const Form = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='form'>
-      <label htmlFor={nameId} className='form_label'>Name
-        <input
+    <VStack borderColor='gray.100'
+      borderWidth='2px'
+      padding='4'
+      borderRadius='lg'
+      width='100%'
+      maxW={{ base: '90vw', sm: '80vw', lg: '50vw', xl: '40vw' }}
+      alignItems='center'>
+   <form onSubmit={handleSubmit} className='form1'> 
+     <FormLabel htmlFor={nameId} color='blue.500' ml='18'>Name</FormLabel>
+        <Input
           type="text"
           name="name" //name cовпадает с полем в state.name!!
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -66,9 +79,8 @@ const Form = () => {
           value={name}
           onChange={handleInputChange}
           id={nameId} />
-      </label>
-      <label htmlFor={numberId} className='form_label'>Number
-        <input
+      <FormLabel htmlFor={numberId} color='blue.500' ml='18'>Number</FormLabel>
+        <Input
           type="tel"
           name="number" //name cовпадает с полем в state.name!!
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -77,10 +89,10 @@ const Form = () => {
           className="input_field"
           value={number}
           onChange={handleInputChange}
-          id={numberId} />
-      </label> 
-      <button type="submit" className='form_btn'>Add contact</button>
-    </form>
+          id={numberId} /> 
+        <Button type="submit" colorScheme="blue" px="16" ml='18' mr='auto'>Add contact</Button>
+      </form>
+      </VStack>
   );
 }
 

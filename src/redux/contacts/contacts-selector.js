@@ -8,13 +8,12 @@ export const getFilteredContacts = ({contacts, filter}) => {
     }
 
     const normalizeFilter = filter.toLowerCase();
-    const filteredContacts = contacts.items.filter(({ name, phone }) => {
+    const filteredContacts = contacts.items.filter(({ name, number }) => {
       const normalizeName = name.toLowerCase();
-      const result = normalizeName.includes(normalizeFilter) || phone.includes(normalizeFilter);
-      console.log(result);
+      const result = normalizeName.includes(normalizeFilter) || number.includes(normalizeFilter);
       return result;
     })
-  console.log(filteredContacts);
+
     return filteredContacts;
   }
  

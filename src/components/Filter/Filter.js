@@ -1,9 +1,8 @@
 import { nanoid } from 'nanoid';
-// import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilter } from 'redux/filter/filter-selectors';
 import { setFilter } from 'redux/filter/filter-slice';
-import '../Form/form.css';
+import { HStack, Input } from '@chakra-ui/react';
 
 export const Filter = () => {
     const filter = useSelector(getFilter);
@@ -16,19 +15,15 @@ export const Filter = () => {
     }
 
     return (
-        <label className='form_label'>
-            Filter by name
-            <input
+        <HStack>
+            <Input
                 type="text"
                 name="filter"
                 value={filter}
                 id={searchContactId}
                 onChange={filterInput}
-                className='input_field'
                 placeholder='Search'
             />
-        </label>
+        </HStack>
     )
 };
-
-// export default Filter;

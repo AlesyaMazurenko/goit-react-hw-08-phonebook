@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 // react
-import React from 'react'
-
+import React from 'react';
+import { Heading } from '@chakra-ui/react';
 //components
 import LoginForm from '../../components/LoginForm/LoginForm';
 
@@ -11,7 +11,14 @@ export default function LoginPage() {
     <div className='container'>
       <Helmet>
       <title>Login</title></Helmet>
-      <h1>Login Page</h1>
+      <Heading
+       mt='15'
+        mb='8'
+        fontWeight='extrabold'
+        textAlign='center'
+        size='2xl'
+        bgGradient='linear(to-r, blue.500, purple.500, purple.500)'
+        bgClip='text'> Login Page</Heading>
         <LoginForm />
     </div>
   )

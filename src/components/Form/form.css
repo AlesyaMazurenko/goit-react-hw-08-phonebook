@@ -10,10 +10,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin-bottom: 20px;
 }
-.from {
+.from1 {
     display: flex;
     font-size: 18px;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .form_label {
@@ -27,9 +28,7 @@
 
 .input_field {
     margin-left: 15px;
-    /* border-color: aquamarine; */
     font-size: 20px;
-
     margin-bottom: 20px;
 }
 
@@ -52,8 +51,8 @@ label {
     
     cursor: pointer;
     padding: 6px 50px;
-    display: block;
-    margin-left: auto;
+    /* display: block; */
+    margin-left: 30px;
     margin-right: auto;
     margin-bottom: 20px;
 }

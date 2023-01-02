@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { logIn } from 'redux/auth/auth-operations';
 import css from './LoginForm.module.css';
+import { FormControl, FormLabel, Input, Button } from '@chakra-ui/react';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -19,47 +20,27 @@ const LoginForm = () => {
 
     return (
         <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-            <label className={css.label}>
-                Email
-                <input type="email" name="email" />
-            </label>
-            <label className={css.label}>
-                Password
-                <input type="password" name="password" />
-            </label>
-            <button type="submit">Log In</button>
+               <FormControl isRequired
+                borderColor='gray.100'
+                borderWidth='2px'                
+                padding='4'                
+                borderRadius='lg'                
+                width='100%'                
+                maxW={{ base: '90vw', sm: '80vw', lg: '50vw', xl: '40vw' }}                
+                alignItems='stretch'
+                marginLeft='auto'
+                marginRight='auto'
+            >
+            <FormLabel color='blue.500' mt='4'>Email</FormLabel>
+            <Input type="email" name="email" placeholder='your_email@mail.com' />
+            <FormLabel color='blue.500' mt='8'>Password</FormLabel>
+            <Input type="password" name="password" />
+            <Button type="submit" colorScheme="blue"
+                    px="20" mt='18'>
+                    Log In</Button>
+            </FormControl>
         </form>
-    )
-    
+    )   
 }
 
 export default LoginForm;
-// const LoginForm = ({ onSubmit }) => {
-//     const dispatch = useDispatch();
-//     const form = e.currentTarget;
-
-//     const { state, handleChange, handleSubmit } = useForm({ initialState, onSubmit });
-
-//     const emailId = useMemo(() => nanoid(), []);
-//     const passwordId = useMemo(() => nanoid(), []);
-
-//     const { email, password } = state;
-
-//     return (
-//         <form onSubmit={handleSubmit}>
-//             <TextField id={emailId} value={email} handleChange={handleChange} {...fields.email} />
-//             <TextField id={passwordId} value={password} handleChange={handleChange} {...fields.password} />
-//             <button>Login</button>
-//         </form>
-//     )
-// }
-
-// export default LoginForm;
-
-// LoginForm.defaultProps = {
-//     onSubmit: () => {}
-// }
-
-// LoginForm.propTypes = {
-//     onSubmit: PropTypes.func,
-// }

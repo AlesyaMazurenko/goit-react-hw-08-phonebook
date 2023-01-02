@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react';
 const styles = {
   container: {
     minHeight: 'calc(100vh - 50px)',
@@ -15,11 +16,14 @@ const styles = {
 export default function HomePage() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>
-        Welcome to your Contacts {' '}
-        {/* <span role="img" aria-label="Greeting icon">
-          💁‍♀️  </span> */}
-      </h1>
+       <Heading
+          mt='15'
+          mb='8'
+          fontWeight='extrabold'
+          size='3xl'
+          bgGradient='linear(to-r, blue.500, purple.300, purple.500)'
+          bgClip='text'>  Welcome to your Contacts</Heading>
+   
     </div>
   );
 }

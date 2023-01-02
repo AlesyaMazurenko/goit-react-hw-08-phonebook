@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'shared/hooks/useAuth';
 import { logOut } from 'redux/auth/auth-operations';
 import css from './UserMenu.module.css';
+import { Button } from '@chakra-ui/react';
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export const UserMenu = () => {
     return (
         <div className={css.wrapper}>
             <p className={css.username}>Welcome, {user.name}</p>
-            <button type='button' onClick={handleLogOut}>Logout</button>
+            <Button type='button' onClick={handleLogOut}  colorScheme="blue" px="4" marginLeft='auto' >Logout</Button>
         </div>
     );
 };
