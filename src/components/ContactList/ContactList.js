@@ -2,7 +2,7 @@ import './contact.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFilteredContacts } from 'redux/contacts/contacts-selector';
 import { deleteContact } from 'redux/contacts/contacts-operations';
-import { HStack, VStack, Text, IconButton, StackDivider, Spacer, Badge } from '@chakra-ui/react';
+import { HStack, VStack, Text, IconButton, StackDivider, Spacer } from '@chakra-ui/react';
 import { FaTrash } from 'react-icons/fa';
 
 export const ContactList = () => {
@@ -15,14 +15,7 @@ export const ContactList = () => {
         dispatch(action);
     }
     
-    const elements = filteredContacts.map(({ name, number, id }) => {
-        // return <li className="contacts_item" key={id}>
-            
-        //     {name}: {number}
-        //     <button type="button" className='btn_remove' onClick={() => onRemoveContact(id)}>X</button>
-        // </li>
-
-  
+    const elements = filteredContacts.map(({ name, number, id }) => {  
         return <HStack key={id}>
             <Text>{name}: {number}</Text>
             <Spacer />
