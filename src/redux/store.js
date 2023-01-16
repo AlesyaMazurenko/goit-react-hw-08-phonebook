@@ -37,32 +37,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-
-// const contactsPersistConfig = {
-//     key: 'root',
-//     storage,
-//     blacklist: ['filter']
-// }
-
-// const reducer = combineReducers({
-//     contacts: contactsReducer,
-//     filter: filterReducer
-// });
-
-// const persistedContactReducer = persistReducer(contactsPersistConfig, reducer)
-
-// export const store = configureStore({
-//     reducer: persistedContactReducer, 
-//     middleware: getDefaultMiddleware => 
-//         getDefaultMiddleware({
-//             serializableCheck: {
-//                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//             },
-//         }),
-// });
-
-// export const persistor = persistStore(store);    
-
-
-
