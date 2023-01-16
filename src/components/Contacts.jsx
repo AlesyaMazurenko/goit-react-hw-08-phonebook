@@ -6,6 +6,7 @@ import { ContactList } from './ContactList/ContactList';
 import { useEffect } from "react";
 import { fetchContacts } from "redux/contacts/contacts-operations";
 import { useDispatch, useSelector } from "react-redux";
+import { getFilter } from "redux/filter/filter-selectors";
 import { getFilteredContacts, selectIsLoading, selectError } from "redux/contacts/contacts-selector";
 import { Heading } from '@chakra-ui/react';
 import { VStack, Badge } from '@chakra-ui/react';
@@ -13,7 +14,7 @@ import { VStack, Badge } from '@chakra-ui/react';
 const Contacts = () => {
 
   const contacts = useSelector(getFilteredContacts);
-  
+  const filter = useSelector(getFilter);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
@@ -46,11 +47,13 @@ const Contacts = () => {
           size='2xl'
           bgGradient='linear(to-r, blue.500, purple.300, purple.500)'
           bgClip='text'> Contacts</Heading> 
- 
-        {contacts?.length === 0 && (<Badge p='3' borderRadius='lg' variant='outline'>
+        
+  
+        {contacts?.length === 0 && filter === '' && (<Badge p='3' borderRadius='lg' variant='outline'>
           The list is empty. Try to add contact</Badge>)}
-        <Filter/>
-        {contacts?.length > 0 && (<ContactList />)}
+        {contacts?.length > 0 && (<><Filter /> <ContactList /> </>)}
+        {filter !== '' && contacts?.length === 0 && (<><Filter /> <Badge p='3' borderRadius='lg' variant='outline'>
+          The filtered list is empty, no contacts in list</Badge></>)}
         {isLoading && !error && <Loader />}
       
         {error && <p>Oooops... Something went wrong</p>}
