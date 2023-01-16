@@ -2,9 +2,9 @@ import axios from "axios";
 
 const instanceContacts = axios.create({
     baseURL: "https://connections-api.herokuapp.com",
-    // params: {
-    //     _limit: 25,
-    // }
+    params: {
+        _limit: 25,
+    }
 });
 
 export const getContactsA = async () => {
