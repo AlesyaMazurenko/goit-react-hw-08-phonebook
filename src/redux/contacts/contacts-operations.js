@@ -1,17 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import * as api from "../../shared/api/contacts";
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-
-// const isDublicate = ({ name, phone }, contacts) => {
-//     const normalizedName = name.toLowerCase();
-
-//     const result = contacts.find(item => {
-//         return (normalizedName === item.name.toLowerCase());
-//     });
-//     return Boolean(result);
-// }
 
 export const fetchContacts = createAsyncThunk(
     'contacts/fetchAll',
@@ -45,41 +35,3 @@ export const deleteContact = createAsyncThunk('contacts/deleteContact', async (c
         return thunkApi.rejectWithValue(error.message);
     }
 })
-
-
-
-
-
-// export const fetchContacts = () => {
-//     const func = async (dispatch) => {
-//         dispatch(actions.fetchContactLoading());
-//         try {
-//             const data = await api.getContactsA();
-//             dispatch(actions.fetchContactSuccess(data));
-//         } catch (error) {
-//             const { message, response } = error;
-//             const errorData = {
-//                 message,
-//                 ststus: response.status,
-//             }
-//             dispatch(actions.addContactError(error));
-//         }
-//     }
-//     return func;
-// }
-
-// export const addContact = (data) => {
-//     const func = async (dispatch, getState) => {
-//         const { contacts } = getState();
-//         if (isDublicate(data, contacts.items)) {
-//             return alert("This contact already exists");
-//         }
-//         try {
-//             dispatch(actions.addContactLoading());
-//             const result = await api.addContactA(data);
-//             dispatch(actions.addContactSuccess(result));
-//         } catch (error) {
-//             dispatch(actions.addContactError(error)); 
-//         }
-//     }
-// }
