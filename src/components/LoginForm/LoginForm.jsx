@@ -32,9 +32,9 @@ const LoginForm = () => {
                 marginRight='auto'
             >
             <FormLabel color='blue.500' mt='4'>Email</FormLabel>
-            <Input type="email" name="email" placeholder='your_email@mail.com' />
+            <Input type="email" name="email" id="login_mail" placeholder='your_email@mail.com' />
             <FormLabel color='blue.500' mt='8'>Password</FormLabel>
-            <Input type="password" name="password" />
+            <Input type="password" name="password"  id="login_pass"/>
             <Button type="submit" colorScheme="blue"
                     px="20" mt='18'>
                     Log In</Button>
