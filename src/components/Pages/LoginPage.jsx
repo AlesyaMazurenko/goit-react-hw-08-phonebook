@@ -1,8 +1,6 @@
 import { Helmet } from 'react-helmet';
-// react
 import React from 'react';
 import { Heading } from '@chakra-ui/react';
-//components
 import LoginForm from '../../components/LoginForm/LoginForm';
 
 
